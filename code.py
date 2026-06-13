@@ -1,8 +1,3 @@
-"""
-SIMPLE NETWORK TOOLKIT
-No external installations needed - pure Python
-"""
-
 import tkinter as tk
 from tkinter import ttk, scrolledtext, messagebox
 import subprocess
@@ -28,13 +23,12 @@ class NetworkToolkit:
         self.setup_ui()
         
     def setup_ui(self):
-        # Title
+      
         title = tk.Label(self.root, text="🌐 Network Toolkit", 
                         font=("Arial", 16, "bold"),
                         bg=self.colors['bg'], fg=self.colors['accent'])
         title.pack(pady=10)
-        
-        # Notebook for tabs
+
         notebook = ttk.Notebook(self.root)
         notebook.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
@@ -101,7 +95,7 @@ class NetworkToolkit:
         info_text.insert(tk.END, f"Hostname: {hostname}\n")
         info_text.insert(tk.END, f"Local IP: {local_ip}\n")
         
-        # Try to get public IP (using a simple DNS trick)
+        # Try to get public IP 
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             s.connect(("8.8.8.8", 80))
@@ -178,7 +172,7 @@ class NetworkToolkit:
         self.ping_result.delete(1.0, tk.END)
         self.ping_result.insert(tk.END, f"Pinging {host}...\n\n")
         
-        # Use system ping command (works on Windows, Mac, Linux)
+        # Use system ping command 
         param = '-n' if platform.system().lower() == 'windows' else '-c'
         command = ['ping', param, '4', host]
         
